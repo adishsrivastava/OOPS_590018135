@@ -1,0 +1,31 @@
+import java.util.*;
+public class Main {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+
+        ArrayList<String> professors = new ArrayList<>();
+
+        System.out.println("Enter 10 favorite professors:");
+        for (int i = 0; i < 10; i++) {
+            String name = sc.nextLine();
+            professors.add(name);
+        }
+
+        HashMap<String, Integer> freqMap = new HashMap<>();
+
+        for (String prof : professors) {
+            if (freqMap.containsKey(prof)) {
+                freqMap.put(prof, freqMap.get(prof) + 1);
+            } else {
+                freqMap.put(prof, 1);
+            }
+        }
+
+        System.out.println("\nFrequency of each professor:");
+        for (Map.Entry<String, Integer> entry : freqMap.entrySet()) {
+            System.out.println(entry.getKey() + " -> " + entry.getValue());
+        }
+
+        sc.close();
+    }
+}
